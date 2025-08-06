@@ -12,7 +12,7 @@ const UserAvatars = React.memo(function UserAvatars({ users, additionalCount = 0
     <div className="flex items-center">
       <div className="flex -space-x-1 sm:-space-x-2">
         {users.slice(0, 3).map((user) => (
-          <Avatar key={user.id} className="h-6 w-6 sm:h-8 sm:w-8 border-2 border-white">
+          <Avatar key={user.id} className="h-10 w-10 sm:h-12 sm:w-12 border-2 border-white">
             <AvatarImage src={user.avatar} alt={user.name} />
             <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
           </Avatar>
