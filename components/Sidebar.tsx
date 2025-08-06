@@ -23,7 +23,6 @@ export default function Sidebar({ className }: SidebarProps) {
     <aside className={cn('bg-white border-r border-gray-200 w-64 hidden lg:block', className)}>
       <div className="p-4 space-y-2">
         {navItems.map((item) => {
-          const Icon = item.icon;
           const isActive = activeItem === item.label;
           
           return (
@@ -36,7 +35,6 @@ export default function Sidebar({ className }: SidebarProps) {
               )}
               onClick={() => setActiveItem(item.label)}
             >
-              <Icon className="mr-3 h-4 w-4" />
               {item.label}
             </Button>
           );
