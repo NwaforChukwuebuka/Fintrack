@@ -16,7 +16,12 @@ import { useDashboardData } from '@/hooks/useDashboardData';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('Overview');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { data, isLoading, error, refetch } = useDashboardData();
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   if (error) {
     return (
@@ -41,10 +46,10 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-50">
       <ErrorBoundary>
-        <Header />
+        <Header onMenuClick={toggleSidebar} />
         
         <div className="flex">
-          <Sidebar />
+          <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
           
           <main className="flex-1 p-2 sm:p-4 lg:p-6 max-w-full mx-auto w-full">
             <PerformanceMonitor />

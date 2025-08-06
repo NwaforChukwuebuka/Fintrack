@@ -6,7 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-const Header = React.memo(function Header() {
+interface HeaderProps {
+  onMenuClick?: () => void;
+}
+
+const Header = React.memo(function Header({ onMenuClick }: HeaderProps) {
   const [showSearch, setShowSearch] = useState(false);
 
   const toggleSearch = useCallback(() => {
@@ -19,12 +23,22 @@ const Header = React.memo(function Header() {
         {/* Left section - Logo and Menu */}
         <div className="flex items-center space-x-2 sm:space-x-4">
           {/* Mobile menu button - always visible on mobile, hidden on desktop */}
-          <Button variant="ghost" size="sm" className="lg:hidden">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="lg:hidden"
+            onClick={onMenuClick}
+          >
             <Menu className="h-5 w-5" />
           </Button>
           
           {/* Desktop menu button - hidden on mobile, visible on desktop */}
-          <Button variant="ghost" size="sm" className="hidden lg:flex">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="hidden lg:flex"
+            onClick={onMenuClick}
+          >
             <Menu className="h-5 w-5" />
           </Button>
           
